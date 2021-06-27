@@ -9,6 +9,11 @@ backgrounds = ["https://cdn.discordapp.com/attachments/593331093130838016/858477
 def index():
     background = random.choice(backgrounds)
     return render_template("home.html", background=background)
+
+@app.route('/dino')
+def dino():
+    background = random.choice(backgrounds)
+    return render_template("dino.html", background=background)
 if __name__ == "__main__":
     # runs the application on the repl development server
     app.run(debug=True, port="5000")
