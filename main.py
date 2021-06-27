@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import random
+import random, requests
 
 app = Flask(__name__)
 
@@ -7,7 +7,9 @@ backgrounds = ["https://cdn.discordapp.com/attachments/593331093130838016/858477
 
 @app.route('/')
 def index():
-    background = random.choice(backgrounds)
+    response = requests.get('https://nekos.life/api/v2/img/wallpaper')
+    background = response.json()['url']
+    #background = random.choice(backgrounds)
     return render_template("home.html", background=background)
 
 @app.route('/dino')
