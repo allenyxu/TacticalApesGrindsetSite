@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import random, requests
+import random
 
 app = Flask(__name__)
 
@@ -16,6 +16,10 @@ def index():
 def dino():
     background = random.choice(backgrounds)
     return render_template("dino.html", background=background)
+@app.route('/snake')
+def snake():
+    background = random.choice(backgrounds)
+    return render_template("snake.html", background=background)
 if __name__ == "__main__":
     # runs the application on the repl development server
     app.run(debug=True, port="5000")
